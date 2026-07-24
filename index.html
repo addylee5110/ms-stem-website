@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS. stem — Hands-on STEM for middle school girls, everywhere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F2E4;
+    --paper-line:#c9c2ac;
+    --navy:#16324F;
+    --navy-deep:#0E2438;
+    --yellow:#FFC93C;
+    --green:#2FAE7B;
+    --red-pen:#D8492F;
+    --ink:#1B1B1B;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Instrument Sans',sans-serif;
+    --font-hand:'Caveat',cursive;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size:28px 28px;
+    background-position:-1px -1px;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* utility */
+  .hand{font-family:var(--font-hand); font-weight:600;}
+  .eyebrow{
+    font-family:var(--font-display);
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--navy);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:8px; height:8px;
+    background:var(--green);
+    border-radius:2px;
+    transform:rotate(45deg);
+    display:inline-block;
+  }
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,242,228,.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1.5px dashed var(--navy);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display); font-weight:700; font-size:20px;
+    color:var(--navy);
+  }
+  .logo svg{width:30px; height:30px;}
+  .navlinks{display:flex; gap:28px; font-family:var(--font-display); font-size:14px; font-weight:500;}
+  .navlinks a{text-decoration:none; position:relative; padding-bottom:2px;}
+  .navlinks a:hover{color:var(--red-pen);}
+  .navcta{
+    font-family:var(--font-display); font-weight:600; font-size:14px;
+    background:var(--navy); color:var(--paper);
+    padding:10px 18px; border-radius:3px; text-decoration:none;
+    border:1.5px solid var(--navy);
+    transition:transform .15s ease;
+  }
+  .navcta:hover{transform:translate(-2px,-2px); box-shadow:3px 3px 0 var(--yellow);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* hero */
+  .hero{
+    padding:90px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:50px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(38px, 5.4vw, 62px);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    color:var(--navy-deep);
+    margin:16px 0 22px;
+  }
+  h1 .mark{
+    background:linear-gradient(transparent 60%, var(--yellow) 60%);
+    padding:0 2px;
+  }
+  .hero p.lede{
+    font-size:19px; max-width:46ch; color:#333;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-display); font-weight:600; font-size:15px;
+    padding:14px 24px; border-radius:3px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    border:1.5px solid var(--navy);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-solid{background:var(--red-pen); border-color:var(--red-pen); color:#fff;}
+  .btn-solid:hover{transform:translate(-2px,-2px); box-shadow:3px 3px 0 var(--navy);}
+  .btn-outline{background:transparent; color:var(--navy);}
+  .btn-outline:hover{transform:translate(-2px,-2px); box-shadow:3px 3px 0 var(--green);}
+
+  /* hero sketch panel: circuit-notebook illustration */
+  .sketch-panel{
+    position:relative;
+    background:var(--navy-deep);
+    border:1.5px solid var(--navy);
+    border-radius:6px;
+    padding:26px;
+    box-shadow:8px 8px 0 rgba(22,50,79,.18);
+  }
+  .sketch-panel svg{width:100%; height:auto;}
+  .margin-note{
+    position:absolute;
+    font-family:var(--font-hand);
+    color:var(--red-pen);
+    font-size:22px;
+    line-height:1.1;
+    transform:rotate(-4deg);
+  }
+  .note-1{ top:-26px; right:-6px; }
+  .note-1 svg{ width:60px; }
+
+  /* marquee strip */
+  .strip{
+    background:var(--navy);
+    color:var(--paper);
+    padding:12px 0;
+    overflow:hidden;
+    border-top:1.5px solid var(--navy-deep);
+    border-bottom:1.5px solid var(--navy-deep);
+  }
+  .strip-track{
+    display:flex; gap:48px;
+    white-space:nowrap;
+    font-family:var(--font-display); font-size:14px; letter-spacing:.06em; text-transform:uppercase;
+    animation:scroll 26s linear infinite;
+    width:max-content;
+  }
+  .strip-track span{opacity:.9;}
+  .strip-track span::after{content:"✦"; margin-left:48px; color:var(--yellow);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){ .strip-track{animation:none;} }
+
+  /* section basics */
+  section{padding:86px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(28px,3.6vw,40px);
+    color:var(--navy-deep);
+    margin-top:12px;
+  }
+
+  /* mission callout */
+  .mission{
+    background:var(--navy-deep);
+    color:var(--paper);
+    border-radius:8px;
+    padding:56px;
+    position:relative;
+  }
+  .mission blockquote{
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(22px,3vw,32px);
+    line-height:1.35;
+    max-width:820px;
+  }
+  .mission .who{margin-top:22px; font-family:var(--font-hand); font-size:22px; color:var(--yellow);}
+  @media (max-width:700px){ .mission{padding:32px 22px;} }
+
+  /* programs - worksheet cards */
+  .cards{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  @media (max-width:860px){ .cards{grid-template-columns:1fr;} }
+  .card{
+    background:#fff;
+    border:1.5px solid var(--navy);
+    border-radius:6px;
+    padding:26px;
+    position:relative;
+  }
+  .card .num{
+    font-family:var(--font-hand); font-size:26px; color:var(--red-pen);
+    position:absolute; top:-14px; left:20px; background:var(--paper);
+    padding:0 8px;
+  }
+  .card h3{
+    font-family:var(--font-display); font-size:20px; margin:10px 0 10px; color:var(--navy-deep);
+  }
+  .card p{color:#333; font-size:15px;}
+  .card svg{width:44px; height:44px; margin-bottom:14px;}
+
+  /* stats with hand-drawn circles */
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    text-align:center;
+  }
+  @media (max-width:760px){ .stats{grid-template-columns:1fr 1fr;} }
+  .stat{position:relative; padding:20px 10px;}
+  .stat svg.circle{position:absolute; inset:0; width:100%; height:100%;}
+  .stat .num{
+    font-family:var(--font-display); font-weight:700; font-size:38px; color:var(--navy-deep);
+  }
+  .stat .label{font-size:14px; color:#444; margin-top:6px;}
+
+  /* map / global reach */
+  .map-wrap{
+    background:#fff; border:1.5px solid var(--navy); border-radius:8px; padding:32px;
+  }
+  .map-wrap svg{width:100%; height:auto;}
+  .legend{display:flex; gap:22px; flex-wrap:wrap; margin-top:18px; font-size:14px;}
+  .legend span{display:inline-flex; align-items:center; gap:8px;}
+  .legend i{width:10px; height:10px; border-radius:50%; display:inline-block; background:var(--green);}
+
+  /* involvement */
+  .involve{
+    display:grid; grid-template-columns:1fr 1fr; gap:24px;
+  }
+  @media (max-width:760px){ .involve{grid-template-columns:1fr;} }
+  .panel{
+    border:1.5px solid var(--navy); border-radius:8px; padding:32px;
+    background:repeating-linear-gradient(135deg, transparent, transparent 11px, rgba(22,50,79,.035) 11px, rgba(22,50,79,.035) 12px);
+  }
+  .panel h3{font-family:var(--font-display); font-size:22px; color:var(--navy-deep); margin-bottom:10px;}
+  .panel p{color:#333; margin-bottom:20px; font-size:15px;}
+
+  /* footer */
+  footer{
+    background:var(--navy-deep); color:var(--paper);
+    padding:52px 0 28px;
+    margin-top:40px;
+  }
+  .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px;}
+  .foot-brand{font-family:var(--font-display); font-weight:700; font-size:22px;}
+  .foot-cols{display:flex; gap:60px; flex-wrap:wrap;}
+  .foot-col h4{font-family:var(--font-display); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:12px;}
+  .foot-col a{display:block; text-decoration:none; opacity:.85; margin-bottom:8px; font-size:14px;}
+  .foot-col a:hover{opacity:1; color:var(--yellow);}
+  .foot-bottom{
+    border-top:1px solid rgba(246,242,228,.2);
+    margin-top:40px; padding-top:20px;
+    font-size:13px; opacity:.7; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  ::selection{background:var(--yellow); color:var(--navy-deep);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#16324F" stroke-width="2"/>
+        <circle cx="20" cy="20" r="4" fill="#D8492F"/>
+        <path d="M20 2V10M20 30V38M2 20H10M30 20H38" stroke="#16324F" stroke-width="2"/>
+        <circle cx="20" cy="10" r="2.2" fill="#2FAE7B"/>
+        <circle cx="10" cy="20" r="2.2" fill="#FFC93C"/>
+        <circle cx="30" cy="20" r="2.2" fill="#FFC93C"/>
+        <circle cx="20" cy="30" r="2.2" fill="#2FAE7B"/>
+      </svg>
+      MS. stem
+    </div>
+    <nav class="navlinks">
+      <a href="#mission">Mission</a>
+      <a href="#programs">Programs</a>
+      <a href="#reach">Global Reach</a>
+      <a href="story.html">My Story</a>
+      <a href="#involve">Get Involved</a>
+    </nav>
+    <a href="#involve" class="navcta">Donate</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">A nonprofit for curious hands</span>
+      <h1>Every girl deserves a <span class="mark">hands-on</span> STEM moment.</h1>
+      <p class="lede">MS. stem runs free, hands-on after-school STEM workshops for middle school girls — mentor-led, girl-only, and built to reach classrooms and community centers around the world.</p>
+      <div class="hero-ctas">
+        <a href="#involve" class="btn btn-solid">Start a chapter</a>
+        <a href="#programs" class="btn btn-outline">See how it works</a>
+      </div>
+    </div>
+    <div class="sketch-panel">
+      <div class="margin-note note-1">
+        first circuit!
+        <svg viewBox="0 0 60 40" fill="none"><path d="M2 4 C 20 2, 30 30, 50 20" stroke="#D8492F" stroke-width="2" fill="none"/><path d="M45 14 L52 20 L44 26" stroke="#D8492F" stroke-width="2" fill="none"/></svg>
+      </div>
+      <svg viewBox="0 0 460 340" fill="none">
+        <rect x="0" y="0" width="460" height="340" rx="4" fill="#0E2438"/>
+        <!-- breadboard-ish trace art -->
+        <g stroke="#2FAE7B" stroke-width="2" fill="none" opacity="0.9">
+          <path d="M30 60 H160 V120 H260"/>
+          <path d="M30 160 H120 V220"/>
+          <path d="M300 40 V140 H420"/>
+          <path d="M180 250 H320 V190"/>
+        </g>
+        <g stroke="#FFC93C" stroke-width="2" fill="none" opacity="0.9">
+          <path d="M60 200 V280 H220"/>
+          <path d="M380 60 V240 H260"/>
+        </g>
+        <g fill="#F6F2E4">
+          <circle cx="30" cy="60" r="5"/>
+          <circle cx="160" cy="60" r="5"/>
+          <circle cx="260" cy="120" r="5"/>
+          <circle cx="30" cy="160" r="5"/>
+          <circle cx="120" cy="220" r="5"/>
+          <circle cx="300" cy="40" r="5"/>
+          <circle cx="420" cy="140" r="5"/>
+          <circle cx="180" cy="250" r="5"/>
+          <circle cx="320" cy="190" r="5"/>
+          <circle cx="60" cy="200" r="5"/>
+          <circle cx="220" cy="280" r="5"/>
+          <circle cx="380" cy="60" r="5"/>
+          <circle cx="260" cy="240" r="5"/>
+        </g>
+        <circle cx="120" cy="220" r="10" fill="#D8492F"/>
+        <text x="140" y="225" font-family="Space Grotesk" font-size="12" fill="#F6F2E4">LED · ON</text>
+        <rect x="330" y="150" width="60" height="30" rx="3" stroke="#F6F2E4" stroke-width="1.5" fill="none"/>
+        <text x="336" y="169" font-family="Space Grotesk" font-size="10" fill="#F6F2E4">MOTOR</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>Circuits</span><span>Robotics</span><span>Chemistry</span><span>Coding</span><span>Bridges</span><span>Solar Ovens</span><span>Water Filters</span><span>Circuits</span><span>Robotics</span><span>Chemistry</span><span>Coding</span><span>Bridges</span><span>Solar Ovens</span><span>Water Filters</span>
+  </div>
+</div>
+
+<section id="mission">
+  <div class="wrap">
+    <div class="mission">
+      <span class="eyebrow" style="color:#FFC93C;">Our mission</span>
+      <blockquote style="margin-top:14px;">"Making hands-on STEM experiences accessible to middle school girls around the world."</blockquote>
+      <div class="who">— that's the whole plan, and we mean every word of it.</div>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What we run</span>
+      <h2>Free workshops, and everything a new chapter needs to start one.</h2>
+    </div>
+    <div class="cards" style="grid-template-columns:repeat(2,1fr); max-width:760px;">
+      <div class="card">
+        <span class="num">01</span>
+        <svg viewBox="0 0 44 44" fill="none"><path d="M22 6 L38 16 L22 26 L6 16 Z" stroke="#16324F" stroke-width="2" fill="none"/><path d="M6 16V30 L22 40 L38 30 V16" stroke="#16324F" stroke-width="2" fill="none"/></svg>
+        <h3>After-School Workshops</h3>
+        <p>Free, multi-week, mentor-led sessions run with local partner schools and community centers, girl-only by design.</p>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="16" stroke="#16324F" stroke-width="2"/><path d="M22 12v10l7 4" stroke="#D8492F" stroke-width="2"/></svg>
+        <h3>Workshop Activity Plans</h3>
+        <p>A detailed library of workshop ideas for chapter heads — each one with step-by-step instructions and the "why" behind it, so a brand-new chapter can run a great session on day one.</p>
+        <a href="PASTE_GOOGLE_FORM_LINK_HERE" class="btn btn-outline" style="margin-top:14px; padding:10px 16px; font-size:13px;">I want to start a chapter →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why hands-on matters</span>
+      <h2>Reading about a circuit and building one are not the same lesson.</h2>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <svg class="circle" viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="54" ry="42" stroke="#D8492F" stroke-width="2" fill="none" transform="rotate(-6 60 60)"/></svg>
+        <div class="num">100%</div>
+        <div class="label">free — every workshop is offered at no cost to the girls or their schools</div>
+      </div>
+      <div class="stat">
+        <svg class="circle" viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="50" ry="44" stroke="#2FAE7B" stroke-width="2" fill="none" transform="rotate(4 60 60)"/></svg>
+        <div class="num">Ages 11–14</div>
+        <div class="label">the exact window where girls' confidence in STEM starts to drift — so it's our whole focus</div>
+      </div>
+      <div class="stat">
+        <svg class="circle" viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="52" ry="40" stroke="#FFC93C" stroke-width="3" fill="none" transform="rotate(-3 60 60)"/></svg>
+        <div class="num">Girl-led</div>
+        <div class="label">every workshop is mentored by women and older girls already working in STEM</div>
+      </div>
+      <div class="stat">
+        <svg class="circle" viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="48" ry="42" stroke="#16324F" stroke-width="2" fill="none" transform="rotate(6 60 60)"/></svg>
+        <div class="num">Volunteer-run</div>
+        <div class="label">every chapter is opened and led by local volunteers, using our free workshop activity plans and training</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reach">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Around the world</span>
+      <h2>Wherever there's a table, we can set up a workshop.</h2>
+    </div>
+    <div class="map-wrap">
+      <svg viewBox="0 0 900 380" fill="none">
+        <!-- simplified world dot-grid -->
+        <g fill="#c9c2ac">
+          <!-- generic scattered landmass dots to suggest continents, decorative not literal -->
+          <g id="dots"></g>
+        </g>
+        <script><![CDATA[
+        ]]></script>
+        <!-- hand-placed continent-ish blobs using circles -->
+        <g fill="#e7e2d0">
+          <ellipse cx="180" cy="150" rx="120" ry="70"/>
+          <ellipse cx="430" cy="120" rx="100" ry="60"/>
+          <ellipse cx="470" cy="230" rx="90" ry="70"/>
+          <ellipse cx="650" cy="140" rx="130" ry="80"/>
+          <ellipse cx="760" cy="270" rx="70" ry="45"/>
+          <ellipse cx="230" cy="270" rx="80" ry="55"/>
+        </g>
+        <!-- chapter nodes -->
+        <g>
+          <circle cx="160" cy="140" r="7" fill="#2FAE7B"/>
+          <circle cx="240" cy="290" r="7" fill="#2FAE7B"/>
+          <circle cx="420" cy="110" r="7" fill="#FFC93C"/>
+          <circle cx="500" cy="220" r="7" fill="#2FAE7B"/>
+          <circle cx="620" cy="150" r="7" fill="#D8492F"/>
+          <circle cx="700" cy="130" r="7" fill="#FFC93C"/>
+          <circle cx="740" cy="260" r="7" fill="#2FAE7B"/>
+          <circle cx="330" cy="180" r="7" fill="#FFC93C"/>
+        </g>
+        <g stroke="#16324F" stroke-width="1.4" stroke-dasharray="3 4" opacity="0.55">
+          <path d="M160 140 L330 180"/>
+          <path d="M330 180 L500 220"/>
+          <path d="M500 220 L620 150"/>
+          <path d="M620 150 L700 130"/>
+        </g>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#2FAE7B"></i> Active chapters</span>
+        <span><i style="background:#FFC93C"></i> Launching this year</span>
+        <span><i style="background:#D8492F"></i> Volunteer inquiry open</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="involve">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Join in</span>
+      <h2>Three ways to put a tool in a girl's hands.</h2>
+    </div>
+    <div class="involve">
+      <div class="panel">
+        <h3>Start a chapter</h3>
+        <p>Bring free MS. stem workshops to your school, town, or country. We hand you curriculum, activity guides, and a mentor network — you bring the room and the girls.</p>
+        <a href="PASTE_GOOGLE_FORM_LINK_HERE" class="btn btn-solid">Apply to open a chapter</a>
+      </div>
+      <div class="panel">
+        <h3>Fund a workshop</h3>
+        <p>Every dollar covers real materials — wire, motors, beakers, breadboards — for a workshop that stays free for every girl who shows up.</p>
+        <a href="#" class="btn btn-outline">Donate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">MS. stem</div>
+      <p style="max-width:26ch; opacity:.8; font-size:14px; margin-top:10px;">Hands-on STEM experiences for middle school girls, everywhere.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#mission">Mission</a>
+        <a href="#programs">Programs</a>
+        <a href="#reach">Global Reach</a>
+        <a href="story.html">My Story</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get involved</h4>
+        <a href="#involve">Start a chapter</a>
+        <a href="#involve">Donate</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 MS. stem</span>
+    <span>Built with hands-on love.</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 340" fill="none">
+  <rect x="0" y="0" width="460" height="340" rx="4" fill="#0E2438"/>
+  <g stroke="#2FAE7B" stroke-width="2" fill="none" opacity="0.9">
+    <path d="M30 60 H160 V120 H260"/>
+    <path d="M30 160 H120 V220"/>
+    <path d="M300 40 V140 H420"/>
+    <path d="M180 250 H320 V190"/>
+  </g>
+  <g stroke="#FFC93C" stroke-width="2" fill="none" opacity="0.9">
+    <path d="M60 200 V280 H220"/>
+    <path d="M380 60 V240 H260"/>
+  </g>
+  <g fill="#F6F2E4">
+    <circle cx="30" cy="60" r="5"/>
+    <circle cx="160" cy="60" r="5"/>
+    <circle cx="260" cy="120" r="5"/>
+    <circle cx="30" cy="160" r="5"/>
+    <circle cx="120" cy="220" r="5"/>
+    <circle cx="300" cy="40" r="5"/>
+    <circle cx="420" cy="140" r="5"/>
+    <circle cx="180" cy="250" r="5"/>
+    <circle cx="320" cy="190" r="5"/>
+    <circle cx="60" cy="200" r="5"/>
+    <circle cx="220" cy="280" r="5"/>
+    <circle cx="380" cy="60" r="5"/>
+    <circle cx="260" cy="240" r="5"/>
+  </g>
+  <circle cx="120" cy="220" r="10" fill="#D8492F"/>
+  <text x="140" y="225" font-family="Space Grotesk" font-size="12" fill="#F6F2E4">LED · ON</text>
+  <rect x="330" y="150" width="60" height="30" rx="3" stroke="#F6F2E4" stroke-width="1.5" fill="none"/>
+  <text x="336" y="169" font-family="Space Grotesk" font-size="10" fill="#F6F2E4">MOTOR</text>
+</svg>
